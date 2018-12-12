@@ -1,8 +1,6 @@
 PImage original;
 
 float[] hues = {286, 213, 126};
-float alpha = 100;
-
 PImage[] edited;
 
 void settings() {
@@ -20,7 +18,7 @@ void setup() {
     loadPixels();
     for (int x = 0; x < original.width; x++) {
       for (int y = 0; y < original.height; y++) {
-        edited[i].pixels[x+y*edited[i].width] = color(hues[i], 255, brightness(original.pixels[x+y*original.width]), alpha);
+        edited[i].pixels[x+y*edited[i].width] = color(hues[i], 255, brightness(original.pixels[x+y*original.width]), 100);
       }
     }
     updatePixels();
@@ -29,7 +27,7 @@ void setup() {
   image(original, 0, 0);
 
   for (int i = 0; i < edited.length; i++)
-    image(edited[i], random(-width/75.0, width/75.0), random(-height/75.0, height/75.0));
+    image(edited[i], random(-width/60.0, width/60.0), random(-height/60.0, height/60.0));
 
   save("edited.jpg");
   exit();
