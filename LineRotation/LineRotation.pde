@@ -14,7 +14,8 @@ void draw() {
       rotate((frameCount+(y/float(lines)*60.0)+(x/float(columns)*60.0))/300.0*TWO_PI);
 
       stroke(0, x/float(columns)*255, y/float(lines)*255);
-      strokeWeight(1.5);
+      strokeWeight(2);
+      strokeCap(ROUND);
 
       line(0, -height/float(lines-1)*2.5, 0, height/float(lines-1)*2.5);
       popMatrix();
