@@ -29,16 +29,16 @@ void draw() {
   noFill();
 
   beginShape();
-  for (float t = 0; t < TWO_PI*turns*constrain((innerR/gcd(innerR, outerR)), 0, 100); t+= 0.025)
+  for (float t = 0; t < TWO_PI*turns*innerR; t+= 0.025)
     vertex(cos(t)*(outerR-innerR)+cos(t*(outerR/innerR))*innerR*penFraction, sin(t)*(outerR-innerR)+sin(t*(outerR/innerR))*innerR*penFraction);
   endShape();
   popMatrix();
 
-  for (float i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {
     noFill();
     rect(width*0.15+width*0.7/3.0*i-width/20, height-240*0.9, width/10, 240*0.8);
 
-    float fraction = (i == 0 ? outerFraction : i == 1 ? innerFraction : i == 2 ? penFraction : turns);
+    float fraction = i == 0 ? outerFraction : i == 1 ? innerFraction : i == 2 ? penFraction : turns;
     fill(255);
     rect(width*0.15+width*0.7/3.0*i-width/20, height-240*0.1-240*0.8*fraction, width/10, -240*0.1-(-240*0.1-240*0.8*fraction));
 
