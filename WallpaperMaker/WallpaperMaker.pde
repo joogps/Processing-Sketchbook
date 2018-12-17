@@ -1,5 +1,5 @@
-int columns= 5;
-int rows = 5;
+int columns;
+int rows;
 
 float hue;
 
