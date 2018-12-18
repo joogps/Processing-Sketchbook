@@ -27,13 +27,13 @@ class Cell {
 
     stroke(0);
     if (walls[0])
-      line(x*w, y*w, x*w+w, y*w);
-    if (walls[1])
       line(x*w+w, y*w, x*w+w, y*w+w);
-    if (walls[2])
+    if (walls[1])
       line(x*w, y*w+w, x*w+w, y*w+w);
-    if (walls[3])
+    if (walls[2])
       line(x*w, y*w, x*w, y*w+w);
+    if (walls[3])
+      line(x*w, y*w, x*w+w, y*w);
   }
 
   void update() {
@@ -71,23 +71,23 @@ class Cell {
 
   void removeWalls(Cell next) {
     if (next.x > x) {
-      walls[1] = false;
-      next.walls[3] = false;
+      walls[0] = false;
+      next.walls[2] = false;
     }
 
     if (next.x < x) {
-      walls[3] = false;
-      next.walls[1] = false;
-    }
-
-    if (next.y > y) {
       walls[2] = false;
       next.walls[0] = false;
     }
 
+    if (next.y > y) {
+      walls[1] = false;
+      next.walls[3] = false;
+    }
+
     if (next.y < y) {
-      walls[0] = false;
-      next.walls[2] = false;
+      walls[3] = false;
+      next.walls[1] = false;
     }
   }
 }

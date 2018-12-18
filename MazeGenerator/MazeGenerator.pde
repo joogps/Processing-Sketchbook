@@ -5,6 +5,8 @@ ArrayList<Cell> stack;
 
 boolean complete;
 
+PVector player;
+
 void setup() {
   size(362, 362);
 
@@ -15,7 +17,9 @@ void setup() {
     }
   }
 
-  current = grid[round(random(grid.length-1))][round(random(grid[0].length-1))];
+  player = new PVector(round(random(grid.length-1)), round(random(grid[0].length-1)));
+
+  current = grid[int(player.x)][int(player.y)];
   current.visited = true;
 
   stack = new ArrayList<Cell>();
@@ -31,5 +35,26 @@ void draw() {
   current.update();
 
   fill(complete ? 255 : 0);
-  rect(current.x*current.w, current.y*current.h, current.w, current.h);
+  rect((current.x+0.25)*current.w, (current.y+0.25)*current.h, current.w*0.5, current.h*0.5);
+
+  if (complete)
+    current = grid[int(player.x)][int(player.y)];
+}
+
+void keyPressed() {
+  if (complete) {
+    if (keyCode == RIGHT && player.x < grid.length-1 && !current.walls[0])
+      player.x++;
+
+    if (keyCode == DOWN && player.y < grid[int(player.x)].length-1 && !current.walls[1])
+      player.y++;
+
+    if (keyCode == LEFT && player.x > 0 && !current.walls[2])
+      player.x--;
+
+    if (keyCode == UP && player.y > 0 && !current.walls[3])
+      player.y--;
+
+    current = grid[int(player.x)][int(player.y)];
+  }
 }
