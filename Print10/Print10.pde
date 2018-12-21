@@ -15,9 +15,9 @@ void draw() {
       translate(x*width/float(slashes.length), y*height/float(slashes[x].length));
 
       if (slashes[x][y])
-        line(0, 0, width/float(slashes.length), height/float(slashes[x].length));
-      else
         line(0, height/float(slashes[x].length), width/float(slashes.length), 0);
+      else
+        line(0, 0, width/float(slashes.length), height/float(slashes[x].length));
       popMatrix();
     }
   }
