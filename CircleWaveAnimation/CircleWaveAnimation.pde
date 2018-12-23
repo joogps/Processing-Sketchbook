@@ -4,7 +4,7 @@ void setup() {
   size(640, 360);
   colorMode(HSB);
 
-  circleWaves = new CircleWave[10];
+  circleWaves = new CircleWave[5];
   for (int i = 0; i < circleWaves.length; i++)
     circleWaves[i] = new CircleWave();
 }
