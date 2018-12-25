@@ -7,22 +7,21 @@ void setup() {
 
 void draw() {
   background(255);
-  ellipseMode(CORNER);
-  
+
   float xoff = startX;
   for (int x = 0; x < width; x++) {
     float yoff = startY;
     for (int y = 0; y < height; y++) {
-      float size = map(noise(xoff, yoff), 0, 1, 1, 25);
-      if(x % 25 == 0 && y % 25 == 0){
+      if (x%20 == 0 && y%20 == 0) {
+        float size = map(noise(xoff, yoff), 0, 1, 1, 20);
         fill(0);
-        ellipse(x + random(-1, 1), y + random(-1, 1), size, size);
+        ellipse(x+size/2, y+size/2, size, size);
       }
       yoff+= 0.01;
     }
     xoff+= 0.01;
   }
-  
-  startX+= map(cos(TWO_PI * frameCount / 240), -1, 1, -0.1, 0.1);
-  startY+= map(cos(TWO_PI * frameCount / 120), -1, 1, 0.1, -0.1);
+
+  startX+= map(cos(TWO_PI*frameCount/450.0), -1, 1, -0.1, 0.1);
+  startY+= map(cos(TWO_PI*frameCount/300.0), -1, 1, 0.1, -0.1);
 }
