@@ -5,13 +5,13 @@ void setup() {
   size(220, 360);
 
   segments = new Segment[7];
-  segments[0] = new Segment(width/2, height/5, width/10, height/4, HALF_PI, false);
-  segments[1] = new Segment(width/2+height/7, height*7/20, width/10, height/4, 0, false);
-  segments[2] = new Segment(width/2+height/7, height*26/40, width/10, height/4, 0, false);
-  segments[3] = new Segment(width/2, height*4/5, width/10, height/4, HALF_PI, false);
-  segments[4] = new Segment(width/2-height/7, height*26/40, width/10, height/4, 0, false);
-  segments[5] = new Segment(width/2-height/7, height*7/20, width/10, height/4, 0, false);
-  segments[6] = new Segment(width/2, height/2, width/10, height/4, HALF_PI, false);
+  segments[0] = new Segment(width/2, height/5, width/10, height/4, HALF_PI);
+  segments[1] = new Segment(width/2+height/7, height*7/20, width/10, height/4, 0);
+  segments[2] = new Segment(width/2+height/7, height*13/20, width/10, height/4, 0);
+  segments[3] = new Segment(width/2, height*4/5, width/10, height/4, HALF_PI);
+  segments[4] = new Segment(width/2-height/7, height*13/20, width/10, height/4, 0);
+  segments[5] = new Segment(width/2-height/7, height*7/20, width/10, height/4, 0);
+  segments[6] = new Segment(width/2, height/2, width/10, height/4, HALF_PI);
 }
 
 void draw() {
@@ -19,7 +19,8 @@ void draw() {
   for (int i = 0; i < segments.length; i++)
     segments[i].display();
 
-  setSegments(hex[frameCount/60%hex.length]);
+  if (frameCount%60 == 0)
+    setSegments(hex[frameCount/60%hex.length]);
 }
 
 void setSegments(int num) {

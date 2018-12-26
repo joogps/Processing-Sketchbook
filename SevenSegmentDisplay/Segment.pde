@@ -9,7 +9,7 @@ class Segment {
   boolean state;
   float animation;
 
-  Segment(float x, float y, float _w, float _h, float a, boolean s) {
+  Segment(float x, float y, float _w, float _h, float a) {
     pos = new PVector(x, y);
 
     w = _w;
@@ -17,7 +17,7 @@ class Segment {
 
     angle = a;
 
-    state = s;
+    state = false;
     animation = 0;
   }
 
