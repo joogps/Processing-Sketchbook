@@ -1,0 +1,5 @@
+-refactor Minesweeper based on the Github Pages version
+-refactor Tic Tac Toe based on the Github Pages version
+-finish the work on joogps.github.io
+-update AutoTextSize
+-snowflake coding challenge
