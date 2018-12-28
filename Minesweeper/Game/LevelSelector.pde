@@ -1,6 +1,7 @@
 class LevelSelector {
   PVector position;
-  float[] size;
+  float w;
+  float h;
 
   int levelCols;
   int levelRows;
@@ -8,11 +9,10 @@ class LevelSelector {
   boolean beingPressed = false;
   boolean selected;
 
-  LevelSelector(int x, int y, float size0, float size1, int lC, int lR, boolean _selected) {
+  LevelSelector(float x, float y, float _w, float _h, int lC, int lR, boolean _selected) {
     position = new PVector(x, y);
-    size = new float[2];
-    size[0] = size0;
-    size[1] = size1;
+    w = _w;
+    h = _h;
 
     levelCols = lC;
     levelRows = lR;
@@ -21,26 +21,26 @@ class LevelSelector {
   }
 
   void show() {
-    if (!beingPressed && !selected) {
-      drawTile(position.x, position.y, size[0], size[1]);
-    } else {
+    if (!beingPressed && !selected)
+      drawTile(position.x, position.y, w, h);
+    else {
       fill(130);
       stroke(0);
-      rect(position.x, position.y, size[0], size[1]);
+      rect(position.x, position.y, w, h);
     }
 
     if (!beingPressed) {
       fill(selected ? 190 : 90);
       textFont(pixelated);
-      textSize(30);
       textAlign(CENTER, CENTER);
-      textLeading(20);
-      text(levelCols + "\n x" + levelRows, position.x + size[0] / 2, position.y + size[1] / 7 * 3);
+      textLeading(15);
+      autoTextSize(levelCols+"\n x"+levelRows, w*2/3.0, h*2/3.0, 2);
+      text(levelCols+"\n x"+levelRows, position.x+w/2.0, position.y+h/2.0);
     }
   }
 
   void checkPress() {
-    if (mousePressed && mouseX > position.x && mouseX < position.x + size[0] && mouseY > position.y && mouseY < position.y + size[1] && mouseButton == LEFT) {
+    if (mousePressed && mouseX > position.x && mouseX < position.x + w && mouseY > position.y && mouseY < position.y + h && mouseButton == LEFT) {
       beingPressed = true;
     } else if (beingPressed) {
       beingPressed = false;
@@ -48,10 +48,10 @@ class LevelSelector {
   }
 
   void checkRelease() {
-    if (mouseX > position.x && mouseX < position.x + size[0] && mouseY > position.y && mouseY < position.y + size[1] && mouseButton == LEFT) {
-      for (int i = 0; i < ui.levelSelectors.length; i++) {
+    if (mouseX > position.x && mouseX < position.x + w && mouseY > position.y && mouseY < position.y + h && mouseButton == LEFT) {
+      for (int i = 0; i < ui.levelSelectors.length; i++)
         ui.levelSelectors[i].selected = false;
-      }
+
 
       selected = true;
 
