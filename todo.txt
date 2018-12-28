@@ -3,3 +3,4 @@
 -finish the work on joogps.github.io
 -update AutoTextSize
 -snowflake coding challenge
+-refactor Tetris until it becomes something good (for real)
