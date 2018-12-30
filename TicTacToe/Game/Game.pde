@@ -4,14 +4,20 @@ HUD hud;
 PImage icon;
 PFont timerFont;
 
+float spacing;
+
 void setup() {
-  size(400, 501);
-  setGame();
+  size(640, 760);
 
-  surface.setTitle("TicTacToe");
+  icon = loadImage("../Assets/Icon1/icon1.png");
+  timerFont = createFont("../Assets/ProductSans.ttf", 1);
 
-  icon = loadImage("..\\Assets\\Icon2\\icon2.png");
+  spacing = height-width;
+
+  surface.setTitle("Tic-Tac-Toe");
   surface.setIcon(icon);
+
+  setGame();
 }
 
 void draw() {
@@ -44,12 +50,9 @@ void setGame() {
   grid = new Tile[3][3];
   hud = new HUD();
 
-  if (timerFont == null)
-    timerFont = createFont("..\\Assets\\ProductSans.ttf", 1);
-
   for (int x = 0; x < grid.length; x++) {
     for (int y = 0; y < grid[x].length; y++) {
-      grid[x][y] = new Tile(x, y, width/float(grid.length), (height-hud.spacing)/float(grid[0].length));
+      grid[x][y] = new Tile(x, y, (width-1)/float(grid.length), (width-1)/float(grid[0].length));
     }
   }
 }

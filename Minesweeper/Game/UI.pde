@@ -26,18 +26,16 @@ class UI {
 
     textFont(digital);
     textAlign(CENTER, CENTER);
-    autoTextSize("888", width*2/5.0, spacing, 1);
+    autoTextSize("888", width/5.0, spacing/2.0, 1);
 
     fill(60, 0, 0);
     text("888", 20+width/10.0, spacing/2.0-textDescent()/2.0);
-
 
     fill(255, 0, 0);
     text(nf(constrain(bombs, 0, cols*rows), 3), 20+width/10.0, spacing/2.0-textDescent()/2.0);
 
     stroke(255);
 
-    textAlign(CENTER, CENTER);
     fill(60, 0, 0);
     text("888", width-20-width/10.0, spacing/2.0-textDescent()/2.0);
 
@@ -74,6 +72,6 @@ class UI {
 void autoTextSize(String str, float w, float h, int l) {
   textSize(1);
   float minW = w/textWidth(str);
-  float minH = h/(l > 0 ? g.textLeading*(l-1)+(textDescent()+textAscent()) : textDescent()+textAscent());
+  float minH = h/float(l);
   textSize(min(minW, minH));
 }

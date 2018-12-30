@@ -9,7 +9,7 @@ class Tile {
   float animation;
 
   Tile(float x, float y, float _w, float _h) {
-    pos = new PVector(x*_w, y*_h+hud.spacing);
+    pos = new PVector(x*_w, spacing+y*_h);
 
     w = _w;
     h = _h;
