@@ -1,5 +1,4 @@
--refactor Tic Tac Toe based on the Github Pages version
 -finish the work on joogps.github.io
--update AutoTextSize
 -snowflake coding challenge
+-update AutoTextSize
 -refactor Tetris until it becomes something good (and I'm not joking)
