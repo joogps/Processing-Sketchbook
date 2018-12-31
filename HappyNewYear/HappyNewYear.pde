@@ -24,7 +24,7 @@ void draw() {
     textSize(autoTextSize("00:00:00", width*5/8.0, height/2.0, 1)*size);
     text(nf(hoursLeft, 2)+":"+nf(minutesLeft, 2)+":"+nf(secondsLeft, 2), width/2, height/2);
   } else {
-    autoTextSize("Happy "+year()+"!", width*3/4.0, height/2.0, 1);
+    autoTextSize("Happy "+year()+"!", width*5/8.0, height/2.0, 1);
     text("Happy "+year()+"!", width/2.0, height/2.0);
 
     for (int i = 0; i < fireworks.size(); i++) {
@@ -44,6 +44,6 @@ float autoTextSize(String str, float w, float h, int l) {
   float minW = w/textWidth(str);
   float minH = h/float(l);
   textSize(min(minW, minH));
-  
+
   return min(minW, minH);
 }

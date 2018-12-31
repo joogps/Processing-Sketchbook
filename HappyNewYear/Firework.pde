@@ -32,9 +32,9 @@ class Firework {
 
   void update() {
     pos.add(vel);
-    vel.mult(0.95);
+    vel.mult(0.975);
 
-    alpha = lerp(alpha, 0, 0.05);
+    alpha = lerp(alpha, 0, 0.025);
     hue+= 0.1;
 
     if (level > 0 && alpha < 10)
