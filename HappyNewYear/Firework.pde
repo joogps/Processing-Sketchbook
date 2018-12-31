@@ -37,7 +37,7 @@ class Firework {
     alpha = lerp(alpha, 0, 0.05);
     hue+= 0.1;
 
-    if (level > 0 && alpha != 0 && alpha < 10)
+    if (level > 0 && alpha < 10)
       recreate();
   }
 
