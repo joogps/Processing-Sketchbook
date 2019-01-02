@@ -1,5 +1,5 @@
 void setup() {
-  size(320, 320);
+  size(512, 512);
 
   loadPixels();
   for (int x = 0; x < width; x++) {
@@ -11,7 +11,7 @@ void setup() {
 
   fill(255);
 
-  textFont(createFont("CalibriBold.ttf", 200));
+  textFont(createFont("CalibriBold.ttf", 300));
   textAlign(CENTER, CENTER);
 
   text("JG", width/2, height/2-textDescent());
