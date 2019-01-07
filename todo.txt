@@ -1,3 +1,4 @@
+-get rid of Product Sans and replace it with Nunito
 -finish the work on joogps.github.io
 -snowflake coding challenge
 -rebuild Tetris until it becomes something good (and I'm not joking)
