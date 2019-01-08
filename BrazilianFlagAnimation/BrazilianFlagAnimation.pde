@@ -1,5 +1,6 @@
 PFont font;
 
+float delay;
 float cover;
 float grow;
 float complete;
@@ -7,7 +8,7 @@ float appear;
 float shrink;
 
 void setup() {
-  size(1440, 1008);
+  size(720, 504);
   font = createFont("Nunito-Bold.ttf", 12);
 }
 
@@ -70,7 +71,10 @@ void draw() {
   }
   popMatrix();
 
-  cover = lerp(cover, 1, 0.05);
+  delay = lerp(delay, 1, 0.1);
+
+  if (delay > 0.99)
+    cover = lerp(cover, 1, 0.1);
 
   if (cover > 0.9)
     grow = lerp(grow, 1, 0.05);
