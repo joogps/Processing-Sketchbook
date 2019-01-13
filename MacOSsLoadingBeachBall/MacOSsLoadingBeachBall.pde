@@ -8,7 +8,7 @@ void setup() {
   size(640, 640);
 
   petals = 6;
-  radius = width*0.4;
+  radius = width >= height ? height*0.4 : width*0.4;
   amplitude = 0;
 
   if (colors.length != petals)
