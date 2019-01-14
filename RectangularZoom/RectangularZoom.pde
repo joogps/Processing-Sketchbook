@@ -33,11 +33,12 @@ void draw() {
 
   if (scale < 1)
     scale+= 0.1;
-  else
-    scale*= 1.1;
+  else {
+    if (Float.isInfinite(scale*1.1))
+      scale = pow(w/h, log(scale)/log(w > h ? w/h : h/w)%30);
 
-  if (Float.isInfinite(scale))
-    scale = 1;
+    scale*= 1.1;
+  }
 }
 
 float dimensions (int times) {
