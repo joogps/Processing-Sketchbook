@@ -1,67 +1,56 @@
-PVector pos1;
-PVector vel1;
-float mass1;
+Box box1;
+Box box2;
 
-PVector pos2;
-PVector vel2;
-float mass2;
+PVector walls;
 
+int digits;
 int collisions;
 
 void setup() {
   size(640, 360);
 
-  pos1 = new PVector(width/2, height*3/4-50);
-  mass1 = 1;
-  vel1 = new PVector();
+  walls = new PVector(width/8, height*3/4);
+  digits = 1;
 
-  pos2 = new PVector(width, height*3/4-100);
-  mass2 = 100000000;
-  vel2 = new PVector(-1/sqrt(mass2), 0);
+  box1 = new Box(width/2, walls.y-50, 0, 50, 1);
+  box2 = new Box(width, walls.y-100, -1/sqrt(pow(10, digits*2)), 100, pow(10, digits*2));
 }
 
 void draw() {
   background(0);
   stroke(255);
-  line(width/8, height*3/4, width, height*3/4);
-  line(width/8, 0, width/8, height*3/4);
+  line(walls.x, walls.y, width, walls.y);
+  line(walls.x, 0, walls.x, walls.y);
 
   textAlign(RIGHT, TOP);
   textSize(30);
   text(collisions, width-textDescent()/2.0, 0);
 
-  rect(pos1.x, pos1.y, 50, 50);
-  rect(pos2.x, pos2.y, 100, 100);
+  box1.display();
+  box2.display();
 
-  for (int i = 0; i < sqrt(mass2); i++) {
-    pos1.add(vel1);
-    pos2.add(vel2);
+  for (int i = 0; i < sqrt(box2.mass); i++) {
+    box1.update();
+    box2.update();
 
     checkCollisions();
-    checkWall();
+    checkWalls();
   }
 }
 
 void checkCollisions() {
-  if (pos1.x+50 >= pos2.x) {
+  if (box1.pos.x+box1.size >= box2.pos.x && box1.pos.x < box2.pos.x+box2.size) {
     //https://en.wikipedia.org/wiki/Elastic_collision
 
-    float vel1x = vel1.copy().x;
-    vel1.x = (mass1-mass2)/(mass1+mass2)*vel1x+(2*mass2)/(mass1+mass2)*vel2.copy().x;
-    vel2.x = (2*mass1)/(mass1+mass2)*vel1x+(mass2-mass1)/(mass1+mass2)*vel2.copy().x;
+    float vel1x = box1.vel.copy().x;
+    box1.vel.x = (box1.mass-box2.mass)/(box1.mass+box2.mass)*vel1x+(2*box2.mass)/(box1.mass+box2.mass)*box2.vel.copy().x;
+    box2.vel.x = (2*box1.mass)/(box1.mass+box2.mass)*vel1x+(box2.mass-box1.mass)/(box1.mass+box2.mass)*box2.vel.copy().x;
 
     collisions++;
   }
 }
 
-void checkWall() {
-  if (pos1.x <= width/8) {
-    vel1.mult(-1);
-    collisions++;
-  }
-
-  if (pos2.x <= width/8) {
-    vel2.mult(-1);
-    collisions++;
-  }
+void checkWalls() {
+  box1.walls();
+  box2.walls();
 }
