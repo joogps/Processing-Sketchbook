@@ -10,7 +10,7 @@ void setup() {
   size(640, 360);
 
   walls = new PVector(width/8, height*3/4);
-  digits = 1;
+  digits = 4;
 
   box1 = new Box(width/2, walls.y-50, 0, 50, 1);
   box2 = new Box(width, walls.y-100, -1/sqrt(pow(10, digits*2)), 100, pow(10, digits*2));

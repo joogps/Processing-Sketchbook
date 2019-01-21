@@ -15,7 +15,7 @@ void setup() {
       }
     }
 
-    if (!found) 
+    if (!found)
       break;
 
     int y = 0;
