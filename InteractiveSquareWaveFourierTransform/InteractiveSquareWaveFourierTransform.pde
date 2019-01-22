@@ -1,61 +1,47 @@
 ArrayList<Float> wave;
-
-float frequency;
-float terms;
+int terms;
 
 void setup() {
-  size(860, 520);
-  wave = new ArrayList<Float>();
+  size(900, 460);
 
-  frequency = 0.1;
-  terms = 0.9;
+  wave = new ArrayList<Float>();
+  terms = 1;
 }
 
 void draw() {
-  float sine = 0;
   background(255);
-
   pushMatrix();
-  translate((width-500)/2, (height-160)/2);
-  ellipse(0, 0, (width-500)/2, (height-160)/2);
+  translate((height-100)/2, (height-100)/2);
 
-  for (int i = 0; i < terms*250.0; i++) {
-    float cos = cos(frameCount/6.0*frequency*TWO_PI*(i*2+1))/(i*2+1)*(width-500)/4.0;
-    float sin = sin(frameCount/6.0*frequency*TWO_PI*(i*2+1))/(i*2+1)*(height-160)/4.0;
-
-    translate(cos, sin);
-    ellipse(0, 0, (width-500)/2/(i*2+3), (height-160)/2/(i*2+3));
-
-    sine+= sin;
-  }
-
-  popMatrix();
-
-  wave.add(sine);
+  float totalSin = 0;
 
   noFill();
-  beginShape();
-  for (int i = 0; i < wave.size(); i++)
-    vertex(width-i, (height-160)/2+wave.get(i));
-  endShape();
+  for (int i = 1; i <= terms; i++) {
+    float cos = cos(-frameCount/300.0*(i*2-1)*TWO_PI);
+    float sin = sin(-frameCount/300.0*(i*2-1)*TWO_PI);
 
-  if (wave.size() > width-(height-160))
+    ellipse(0, 0, (height-100)/2/(i*2-1), (height-100)/2/(i*2-1));
+    line(0, 0, cos*(height-100)/(i*2-1)/4, sin*(height-100)/(i*2-1)/4);
+
+    translate(cos*(height-100)/(i*2-1)/4, sin*(height-100)/(i*2-1)/4);
+
+    totalSin+= sin/(i*2-1);
+  }
+  popMatrix();
+
+  wave.add(totalSin);
+
+  for (int i = 0; i < wave.size(); i++)
+    line(width-i, (height-100)/2+wave.get(i)*(height-100)/4, width-i-(i < wave.size()-1 ? 1 : 0), (height-100)/2+wave.get(i < wave.size()-1 ? i+1 : i)*(height-100)/4);
+
+  if (wave.size() >= width-(height-100))
     wave.remove(0);
 
-  for (int i = 0; i < 2; i++) {
-    line(width/10.0, height*4/6.0+height/6.0*i, width*9/10.0, height*4/6.0+height/6.0*i);
+  line(width*0.1, height-50, width*0.9, height-50);
 
-    float fraction = i == 0 ? frequency : terms;
-    fill(255);
-    ellipse(width/10.0+width*4/5.0*fraction, height*4/6.0+height/6.0*i, 30, 30);
+  fill(255);
+  ellipse(width*0.1+(terms-1)/50.0*width*0.8, height-50, 30, 30);
 
-    if (mousePressed && mouseX > width/10.0 && mouseX < width*9/10.0 && mouseY > height*4/6.0+height/6.0*i-15 && mouseY < height*4/6.0+height/6.0*i+15) {
-      fraction = (mouseX-width/10.0)/(width*8/10.0);
-
-      if (i == 0)
-        frequency = fraction;
-      else
-        terms = fraction;
-    }
-  }
+  if (mouseX > width*0.1 && mouseX < width*0.9 && mouseY > height-65 && mouseY < height-35 && mousePressed)
+    terms = int((mouseX-width*0.1)/(width*0.8)*50)+1;
 }
