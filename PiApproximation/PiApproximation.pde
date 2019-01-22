@@ -33,24 +33,24 @@ void draw() {
     box1.update();
     box2.update();
 
-    checkCollisions();
-    checkWalls();
+    checkCollisions(box1, box2);
+    checkWalls(box1, box2);
   }
 }
 
-void checkCollisions() {
-  if (box1.pos.x+box1.size >= box2.pos.x && box1.pos.x < box2.pos.x+box2.size) {
+void checkCollisions(Box b1, Box b2) {
+  if (box1.pos.x+b1.size >= b2.pos.x && b1.pos.x < b2.pos.x+b2.size) {
     //https://en.wikipedia.org/wiki/Elastic_collision
 
-    float vel1x = box1.vel.copy().x;
-    box1.vel.x = (box1.mass-box2.mass)/(box1.mass+box2.mass)*vel1x+(2*box2.mass)/(box1.mass+box2.mass)*box2.vel.copy().x;
-    box2.vel.x = (2*box1.mass)/(box1.mass+box2.mass)*vel1x+(box2.mass-box1.mass)/(box1.mass+box2.mass)*box2.vel.copy().x;
+    float vel1x = b1.vel.copy().x;
+    b1.vel.x = (b1.mass-b2.mass)/(b1.mass+b2.mass)*vel1x+(2*b2.mass)/(b1.mass+b2.mass)*b2.vel.copy().x;
+    b2.vel.x = (2*b1.mass)/(b1.mass+b2.mass)*vel1x+(b2.mass-b1.mass)/(b1.mass+b2.mass)*b2.vel.copy().x;
 
     collisions++;
   }
 }
 
-void checkWalls() {
-  box1.walls();
-  box2.walls();
+void checkWalls(Box b1, Box b2) {
+  b1.walls();
+  b2.walls();
 }
