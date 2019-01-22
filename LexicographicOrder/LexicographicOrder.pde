@@ -3,20 +3,23 @@ int[] nums = {1, 2, 3, 4};
 void setup() {
   for (int l = 0; l < factorial(nums.length); l++) {
     println(join(nf(nums, 0), ", "));
+    nums = lexicographic(nums);
+  }
+}
 
-    int x = 0;
-    boolean found = false;
+int[] lexicographic(int[] nums) {
+  int x = 0;
+  boolean found = false;
 
-    for (int i = nums.length-2; i >= 0; i--) {
-      if (nums[i] < nums[i+1]) {
-        x = i;
-        found = true;
-        break;
-      }
-    }
-
-    if (!found)
+  for (int i = nums.length-2; i >= 0; i--) {
+    if (nums[i] < nums[i+1]) {
+      x = i;
+      found = true;
       break;
+    }
+  }
+
+  if (found) {
 
     int y = 0;
 
@@ -35,6 +38,8 @@ void setup() {
 
     nums = concat(subset(nums, 0, x+1), reverse(subset(nums, x+1, nums.length-x-1)));
   }
+
+  return nums;
 }
 
 int factorial (int n) {
