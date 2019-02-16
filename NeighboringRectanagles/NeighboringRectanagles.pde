@@ -16,13 +16,13 @@ void draw() {
 
   int x = round(random(size));
   int y = round(random(size));
-  fill(10, 100, 200, 5);
+  fill(10, 100, 255, 5);
   rect(width*x/size, height*y/size, width/size, height/size);
 
   float neighborAngle = random(TWO_PI);
   int neighborX = x+round(cos(neighborAngle));
   int neighborY = y+round(sin(neighborAngle));
 
-  fill(10, 150, 200, 5);
+  fill(10, 255, 255, 5);
   rect(width*neighborX/size, height*neighborY/size, width/size, height/size);
 }
