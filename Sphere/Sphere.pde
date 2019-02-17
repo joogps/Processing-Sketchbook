@@ -3,30 +3,40 @@
 import peasy.*;
 PeasyCam cam;
 
-float radius = 100;
-float detail = 100;
+float radius = 200;
+float detail = 60;
 
 void setup() {
-  size(640, 640, P3D);
-  cam = new PeasyCam(this, 300);
+  size(900, 900, P3D);
+
+  cam = new PeasyCam(this, radius*2.5);
 }
 
 void draw() {
   background(255);
+  lights();
 
-  for (float p = 0; p < PI+PI/detail; p+= PI/detail) {
+  noStroke();
+
+  for (float i = 0; i < detail*2+1; i++) {
     beginShape(TRIANGLE_STRIP);
-    for (float a = 0; a < TWO_PI+PI/detail; a+= PI/detail) {
-      float x = radius*sin(p)*cos(a);
-      float y = radius*sin(p)*sin(a);
+    for (float j = 0; j < detail; j++) {
+      float a = PI*i/detail;
+      float p = PI*j/detail;
+
+      float x = radius*cos(a)*sin(p);
+      float y = radius*sin(a)*sin(p);
       float z = radius*cos(p);
-      
+
       vertex(x, y, z);
-      
-      float nx = radius*sin(p+PI/detail)*cos(a+PI/detail);
-      float ny = radius*sin(p+PI/detail)*sin(a+PI/detail);
-      float nz = radius*cos(p+PI/detail);
-      
+
+      float na = PI*(i+1)/detail;
+      float np = PI*(j+1)/detail;
+
+      float nx = radius*cos(na)*sin(np);
+      float ny = radius*sin(na)*sin(np);
+      float nz = radius*cos(np);
+
       vertex(nx, ny, nz);
     }
     endShape();

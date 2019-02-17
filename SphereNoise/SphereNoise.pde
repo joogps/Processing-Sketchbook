@@ -16,7 +16,7 @@ void setup() {
   colorMode(HSB);
   noiseDetail(1, 0.5);
 
-  cam = new PeasyCam(this, radius*2);
+  cam = new PeasyCam(this, radius*2.25);
 }
 
 void draw() {
