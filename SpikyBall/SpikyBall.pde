@@ -34,8 +34,11 @@ void draw() {
   sphere(newRadius/4.0);
 
   stroke(255);
-  for (float p = 0; p < PI; p+= PI/detail) {
-    for (float a = 0; a < TWO_PI; a+= PI/detail) {
+  for (int i = 0; i < detail*2+1; i++) {
+    for (int j = 0; j < detail; j++) {
+      float a = PI*i/detail;
+      float p = PI*j/detail;
+
       float x = sin(p)*cos(a); 
       float y = sin(p)*sin(a);
       float z = cos(p);
