@@ -18,9 +18,9 @@ void draw() {
 
   noStroke();
 
-  for (float i = 0; i < detail*2+1; i++) {
+  for (int i = 0; i < detail*2+1; i++) {
     beginShape(TRIANGLE_STRIP);
-    for (float j = 0; j < detail; j++) {
+    for (int j = 0; j < detail; j++) {
       float a = PI*i/detail;
       float p = PI*j/detail;
 
