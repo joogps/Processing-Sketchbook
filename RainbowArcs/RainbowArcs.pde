@@ -1,19 +1,22 @@
 //https://en.wikipedia.org/wiki/Spherical_coordinate_system
 
-import peasy.*;
-PeasyCam cam;
-
 float radius = 200;
+float radiusGoal = radius;
+float previousRadius;
+
+float zoom = -radius*2.75;
+
 float detail = 60;
 
 float arcDetail = 120;
-float colorChange;
+float arcOffset = 0;
+float arcRadius = radius;
+float hueChange;
 
 void setup() {
   size(900, 900, P3D);
   colorMode(HSB);
-
-  cam = new PeasyCam(this, radius*4);
+  resetMatrix();
 }
 
 void draw() {
@@ -23,43 +26,33 @@ void draw() {
   fill(255);
   noStroke();
 
-  for (int i = 0; i < detail*2+1; i++) {
-    beginShape(TRIANGLE_STRIP);
-    for (int j = 0; j < detail; j++) {
-      float a = PI*i/detail;
-      float p = PI*j/detail;
+  translate(0, 0, zoom);
 
-      float x = radius*cos(a)*sin(p);
-      float y = radius*sin(a)*sin(p);
-      float z = radius*cos(p);
-
-      vertex(x, y, z);
-
-      float na = PI*(i+1)/detail;
-      float np = PI*(j+1)/detail;
-
-      float nx = radius*cos(na)*sin(np);
-      float ny = radius*sin(na)*sin(np);
-      float nz = radius*cos(np);
-
-      vertex(nx, ny, nz);
-    }
-    endShape();
-  }
+  sphere(radius);
 
   noFill();
   strokeWeight(3);
   for (int i = 0; i < arcDetail; i++) {
-    float y = -radius+radius*2*(i/arcDetail);
-    float r = sqrt(sq(radius)-sq(y));
+    float y = -arcRadius+arcRadius*2*(i/arcDetail);
+    float r = sqrt(sq(arcRadius)-sq(y));
 
-    stroke((i/arcDetail*255+colorChange)%255, 255, 255);
+    stroke((i/arcDetail*255+hueChange)%255, 255, 255);
     beginShape();
-    for (float a = 0; a <= constrain((frameCount/300.0-((i-1)/arcDetail))*TWO_PI, 0, TWO_PI); a+= PI/90.0)
+    for (float a = 0; a <= constrain(((frameCount-arcOffset)/200.0-((i-1)/arcDetail))*TWO_PI, 0, PI); a+= PI/90.0)
       vertex(cos(a)*r, y, sin(a)*r);
     endShape();
   }
 
-  if ((frameCount/300.0-(0.5-1.5/arcDetail))*TWO_PI > PI)
-    colorChange+= 0.75;
+  hueChange+= 0.75;
+
+  if (((frameCount-arcOffset)/200.0-((arcDetail-2)/arcDetail))*TWO_PI > PI) {
+    radiusGoal*= 1.1;
+    previousRadius = radius;
+    arcOffset = frameCount;
+    arcRadius = radiusGoal;
+  }
+
+  radius = lerp(radius, radiusGoal, 0.05);
+
+  zoom = lerp(zoom, -radius*2.75, 0.025);
 }
