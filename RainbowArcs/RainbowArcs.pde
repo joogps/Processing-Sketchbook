@@ -2,15 +2,18 @@
 
 float radius = 200;
 float radiusGoal = radius;
-float previousRadius;
-
-float zoom = -radius*2.75;
-
-float detail = 60;
 
 float arcDetail = 120;
 float arcOffset = 0;
-float arcRadius = radius;
+
+float arcRadius = radius*1.01;
+float arcRadiusGoal = arcRadius;
+
+float arcSize = 3;
+
+float zoom = -radius*2.75;
+float detail = 60;
+
 float hueChange;
 
 void setup() {
@@ -23,15 +26,15 @@ void draw() {
   background(255);
   lights();
 
+  translate(0, 0, zoom);
+
   fill(255);
   noStroke();
-
-  translate(0, 0, zoom);
 
   sphere(radius);
 
   noFill();
-  strokeWeight(3);
+  strokeWeight(arcSize);
   for (int i = 0; i < arcDetail; i++) {
     float y = -arcRadius+arcRadius*2*(i/arcDetail);
     float r = sqrt(sq(arcRadius)-sq(y));
@@ -47,12 +50,15 @@ void draw() {
 
   if (((frameCount-arcOffset)/200.0-((arcDetail-2)/arcDetail))*TWO_PI > PI) {
     radiusGoal*= 1.1;
-    previousRadius = radius;
-    arcOffset = frameCount;
-    arcRadius = radiusGoal;
   }
 
-  radius = lerp(radius, radiusGoal, 0.05);
+  if (radius > arcRadius) {
+    arcOffset = frameCount;
+    arcRadiusGoal = radiusGoal*1.01;
+  }
+
+  radius = lerp(radius, radiusGoal, 0.01);
+  arcRadius = lerp(arcRadius, arcRadiusGoal, 0.01);
 
   zoom = lerp(zoom, -radius*2.75, 0.025);
 }
