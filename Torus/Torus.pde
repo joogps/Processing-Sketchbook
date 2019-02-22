@@ -10,26 +10,21 @@ int detail = 50;
 
 void setup() {
   size(900, 900, P3D);
-
   colorMode(HSB);
-  noiseDetail(2, 1);
 
   cam = new PeasyCam(this, (radius1+radius2)*2.75);
-
-  background(0);
 }
 
 void draw() {
-  fill(0, 75);
-  rect(-width/2.0, -height/2.0, width, height);
+  background(0);
 
-  directionalLight(noise(sin(frameCount/300.0*TWO_PI)+1)*255, 255, 255, sin(frameCount/300.0*TWO_PI), cos(frameCount/450.0*TWO_PI), sin(frameCount/600.0*TWO_PI));
+  directionalLight(0, 0, 255, sin(frameCount/112.5*TWO_PI), cos(frameCount/225.0*TWO_PI), sin(frameCount/75.0*TWO_PI));
 
-  rotateX(cos(frameCount/600.0*TWO_PI)*TWO_PI);
-  rotateY(sin(frameCount/750.0*TWO_PI)*TWO_PI);
-  rotateZ(sin(frameCount/300.0*TWO_PI)*TWO_PI);
+  rotateX(frameCount/225.0*TWO_PI);
+  rotateY(frameCount/450.0*TWO_PI);
+  rotateZ(frameCount/300.0*TWO_PI);
 
-  fill(255);
+  fill(frameCount/900.0*255%255, 255, 255);
   noStroke();
 
   for (int i = 0; i < detail*2+1; i++) {
