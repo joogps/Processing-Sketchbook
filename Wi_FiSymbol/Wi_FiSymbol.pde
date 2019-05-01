@@ -15,16 +15,12 @@ void setup() {
     arcs[i] = new Arc(radius*i/float(arcs.length-1));
 
   fill = new float[arcs.length];
+
+  frameRate(4);
 }
 
 void draw() {
   background(255);
-
-  for (int i = currentFill; i >= 0; i--)
-    fill[i] = lerp(fill[i], i%2 == 0 ? 1 : -1, 0.1);
-
-  if (abs(fill[currentFill]) > 0.95 && currentFill < fill.length-1)
-    currentFill++;
 
   translate(width/2.0, height/2.0+radius);
 
@@ -34,6 +30,12 @@ void draw() {
     arcs[i].update(fill[i]);
     arcs[i].display();
   }
+
+  if (abs(fill[currentFill]) > 0.95 && currentFill < fill.length-1)
+    currentFill++;
+
+  for (int i = currentFill; i >= 0; i--)
+    fill[i] = lerp(fill[i], i%2 == 0 ? 1 : -1, 0.1);
 }
 
 void mouseClicked() {

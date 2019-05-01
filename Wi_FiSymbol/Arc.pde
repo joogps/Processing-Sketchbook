@@ -14,14 +14,10 @@ class Arc {
 
   void display() {
     if (fill == 0) {
-      if (arcs[currentFill].fill == 0)
-        point(0, 0);
-      else {
-        float x = cos(arcs[currentFill].angle)*radius*2;
-        float y = sin(arcs[currentFill].angle)*radius*2;
+      float x = cos(arcs[currentFill].angle)*radius*2;
+      float y = sin(arcs[currentFill].angle)*radius*2;
 
-        point(x, y);
-      }
+      point(x, y);
     } else
       arc(0, 0, radius*4, radius*4, start, end);
   }
