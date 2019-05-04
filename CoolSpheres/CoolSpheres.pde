@@ -48,9 +48,4 @@ void draw() {
       }
     }
   }
-
-  if (frameCount < 12*60)
-    saveFrame("frames/####.png");
-  else
-    exit();
 }
