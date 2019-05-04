@@ -1,4 +1,4 @@
-// https://stackoverflow.com/questions/9600801/evenly-distributing-n-points-on-a-sphere
+// https://stackoverflow.com/a/26127012
 
 float rad;
 
