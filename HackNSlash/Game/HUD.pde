@@ -23,7 +23,7 @@ class HUD {
     fill((1-player.superShot)*255);
 
     textAlign(LEFT, TOP);
-    text(nf(score, str(levelGoals[level-1]).length())+" = "+levelGoals[level-1], textDescent(), 0);
+    text(nf(score, str(levelGoals[level-1]).length())+" | "+levelGoals[level-1], textDescent(), 0);
   }
 
   void levelChange() {

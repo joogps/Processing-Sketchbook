@@ -10,7 +10,7 @@ void setup() {
   size(640, 760);
 
   icon = loadImage("../Assets/Icon1/icon1.png");
-  timerFont = createFont("../Assets/ProductSans.ttf", 1);
+  timerFont = createFont("../Assets/Nunito-SemiBold.ttf", 1);
 
   spacing = height-width;
 

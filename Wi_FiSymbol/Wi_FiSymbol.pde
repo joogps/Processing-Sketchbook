@@ -15,8 +15,6 @@ void setup() {
     arcs[i] = new Arc(radius*i/float(arcs.length-1));
 
   fill = new float[arcs.length];
-
-  frameRate(4);
 }
 
 void draw() {

@@ -4,7 +4,7 @@ void setup() {
 
   fill(255);
 
-  textFont(createFont("Product Sans Bold.ttf", 250));
+  textFont(createFont("Nunito-Black.ttf", 250));
   textAlign(CENTER, CENTER);
   textLeading(210);
 

@@ -17,7 +17,7 @@ int created;
 void setup() {
   size(640, 360);
 
-  hudFont = createFont("..\\Assets\\Product Sans Regular.ttf", 1);
+  hudFont = createFont("..\\Assets\\Nunito-Black.ttf", 1);
 
   particles = new ArrayList<Particle>();
   hud = new HUD();

@@ -1,6 +1,12 @@
 /**
+ * This is a spin-off of
+ *
  * GetWindowLocation (v2.1)
- * by Quark (2016-Jul-28)
+ * by  Quark (2016-Jul-28)
+ * mod GoToLoop
+ *
+ * forum.Processing.org/two/discussion/17675/
+ * how-to-get-surface-window-x-and-y-coordinates#Item_12
  */
 
 final int[] xy = new int[2];

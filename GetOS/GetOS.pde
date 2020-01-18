@@ -1,5 +1,5 @@
 void setup() {
-  println(getOS());
+  print(getOS());
 }
 
 String getOS() {

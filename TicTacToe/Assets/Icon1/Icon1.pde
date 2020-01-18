@@ -3,9 +3,9 @@ void setup() {
 
   background(255);
   drawO(-width/4, -height/4, width*1.5, height*1.5);
-  drawX(width/8, height/8, width*0.75, height*0.75);
+  drawX(width/5, height/5, width*0.6, height*0.6);
 
-  save("icon2.png");
+  save("icon.png");
   exit();
 }
 

@@ -39,5 +39,5 @@ void draw() {
     endShape(CLOSE);
   }
 
-  amplitude = frameCount/300.0;
+  amplitude = sin(PI*frameCount/600.0);
 }

@@ -5,7 +5,7 @@ void setup() {
   size(640, 360);
 
   on = new float[16];
-  font = createFont("Product Sans Bold.ttf", 50);
+  font = createFont("Nunito-Bold.ttf", 50);
 }
 
 void draw() {

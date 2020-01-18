@@ -32,7 +32,7 @@ class HUD {
     gridAnimation = lerp(gridAnimation, 1, 0.1);
 
     noStroke();
-    fill(255-(gridAnimation*(255-150)));
+    fill(255-(gridAnimation*(255-175)));
     rect(0, spacing, width, height-spacing);
 
     stroke(255);
@@ -49,7 +49,7 @@ class HUD {
     fill(255);
     rect(0, 0, width, spacing);
 
-    fill(255-(gridAnimation*(255-150)));
+    fill(255-(gridAnimation*(255-175)));
     textFont(timerFont);
     textAlign(LEFT, CENTER);
     autoTextSize(str(round(timer/1000)), width/3.0, spacing*3/4.0, 1);
@@ -73,7 +73,7 @@ class HUD {
       textAlign(RIGHT, CENTER);
 
       if (winner == null) {
-        fill(255-(gameOverAnimation*(255-130)));
+        fill(255-(gameOverAnimation*(255-175)));
 
         autoTextSize("DRAW", width/3.0, spacing*3/4.0, 1);
         text("DRAW", width-10, spacing/2.0-textDescent()/2.0);
@@ -86,7 +86,7 @@ class HUD {
         drawX(width-textWidth("DRAW")-spacing*0.75*1.5, spacing/2-spacing*0.75/2, spacing*0.75, spacing*0.75, gameOverAnimation);
       } else {
         if (winner == "x") {
-          fill(255-(gameOverAnimation*(255-130)));
+          fill(255-(gameOverAnimation*(255-175)));
 
           autoTextSize("WINS", width/3.0, spacing*3/4.0, 1);
           text("WINS", width-10, spacing/2.0-textDescent()/2.0);
@@ -97,7 +97,7 @@ class HUD {
 
           drawX(width-10-textWidth("WINS")-spacing*0.75, spacing/2-spacing*0.75/2, spacing*0.75, spacing*0.75, gameOverAnimation);
         } else if (winner == "o") {
-          fill(255-(gameOverAnimation*(255-130)));
+          fill(255-(gameOverAnimation*(255-175)));
 
           autoTextSize("WINS", width/3.0, spacing*3/4.0, 1);
           text("WINS", width-10, spacing/2.0-textDescent()/2.0);

@@ -1,3 +1,10 @@
+/**
+ * This was probably the first sketch I ever made in Processing
+ * Before that, I had only made a few projects on Khan Academy's website, where I learned to code
+ 
+ * Also, it was entirely written on a Raspberry Pi
+**/
+
 ArrayList<Ball> balls = new ArrayList<Ball>();
 
 void setup(){

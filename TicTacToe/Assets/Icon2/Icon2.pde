@@ -31,7 +31,7 @@ void setup() {
   pushMatrix();
   translate((width-w)/2, (height-h)/2);
 
-  fill(150);
+  fill(175);
   noStroke();
   rect(0, 0, w, h);
 
@@ -56,7 +56,7 @@ void setup() {
   }
   popMatrix();
 
-  save("icon1.png");
+  save("icon2.png");
   exit();
 }
 

@@ -6,7 +6,7 @@ void setup() {
   colorMode(HSB);
 
   fireworks = new ArrayList();
-  font = createFont("Product Sans Bold.ttf", 12);
+  font = createFont("Nunito-Black.ttf", 12);
 }
 
 void draw() {

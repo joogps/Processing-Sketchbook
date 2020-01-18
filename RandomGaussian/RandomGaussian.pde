@@ -1,3 +1,9 @@
+/**
+ * This is a spin-off of the second example sketch in the randomGaussian() reference page
+ *
+ * https://processing.org/reference/randomGaussian_.html
+ */
+
 float[] distribution = new float[360];
 float[] noiseX = new float[360];
 

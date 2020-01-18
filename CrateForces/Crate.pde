@@ -14,7 +14,7 @@ class Crate {
   float minY;
 
   Crate(float x, float y, ArrayList<PVector> _forces) {
-    crate = loadImage("crate.PNG");
+    crate = loadImage("crate.png");
 
     pos = new PVector(x, y);
     forces = _forces;
@@ -65,8 +65,6 @@ class Crate {
   }
 
   void update() {
-    println(maxY);
-
     for (int i = 0; i < forces.size(); i++) {
       pos.add(forces.get(i));
     }

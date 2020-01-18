@@ -6,7 +6,7 @@ void setup() {
 
   background(0);
 
-  textFont(createFont("Product Sans Regular.ttf", 100));
+  textFont(createFont("Nunito-Bold.ttf", 100));
   textAlign(CENTER, CENTER);
 
   fill(0, 0, 180);
