@@ -7,10 +7,13 @@ void setup(){
   for(int i = 0; i < stars.length; i++){
     stars[i] = new Star();
   }
+  
+  fill(0, 0, 0, 0);
+  rect(0, 0, width, height);
 };
 
 void draw(){
-  fill(0, 0, 0, 100);
+  fill(0, 0, 0, 25);
   rect(0, 0, width, height);
   
   pushMatrix();

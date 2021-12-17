@@ -1,12 +1,13 @@
 float phi = (1+sqrt(5))/2.0;
 
 void setup() {
-  size(680, 420);
+  fullScreen();
+  pixelDensity(2);
 }
 
 void draw() {
   background(255);
-  fibonacci(width, height, abs(round(sin(frameCount/600.0*TWO_PI)*10)));
+  fibonacci(width, height, abs(round(sin(frameCount/600.0*TWO_PI)*12)));
 }
 
 void fibonacci(float w, float h, int level) {
