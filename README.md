@@ -1,5 +1,5 @@
-# Processing-Sketchbook 📓
-Some of the sketches I made in the Processing environment.
+# Processing Sketchbook 📓
+Some of the sketches I made in the Processing IDE.
 
 ### Structure
 This repository is currently organized in two main folders:
